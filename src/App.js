@@ -112,8 +112,6 @@ function App() {
         <Room
           weaponsRooms={weaponsRooms}
           peopleRooms={peopleRooms}
-          murderWeapon={murderWeapon}
-          guestPairs={guestPairs}
           gameCounter={gameCounter}
         />
       </Route>

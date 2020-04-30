@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, {useState, useContext} from "react";
+import {MurderContext} from '../../contexts/MurderContext'
+const Examining = ({currentWeapon}) => {
 
-const Examining = props => {
-  const { murderWeapon, currentWeapon } = props;
+  const {murderWeapon} = useContext(MurderContext);
+ 
   const [isMurderWeapon, setIsMurderWeapon] = useState("");
+
+
 
   if (currentWeapon !== murderWeapon) {
     return (

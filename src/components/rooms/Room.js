@@ -3,14 +3,8 @@ import { useParams } from "react-router-dom";
 import Question from "./Question";
 import ExamineObj from "./ExamineObj";
 
-const Room = props => {
-  const {
-    weaponsRooms,
-    peopleRooms,
-    murderWeapon,
-    guestPairs,
-    gameCounter
-  } = props;
+const Room = ({weaponsRooms, peopleRooms, gameCounter}) => {
+   
   const { roomName } = useParams();
   const [currentWeapon, setCurrentWeapon] = useState("");
   const [currentPerson, setCurrentPerson] = useState("");
@@ -41,12 +35,10 @@ const Room = props => {
           <p>{`${currentPerson} is lurking in the corner.`}</p>
           <Question
             currentPerson={peopleRooms[roomName]}
-            guestPairs={guestPairs}
             isQuestioning={isQuestioning}
             setIsQuestioning={setIsQuestioning}
           />
           <ExamineObj
-            murderWeapon={murderWeapon}
             currentWeapon={weaponsRooms[roomName]}
             isExamining={isExamining}
             setIsExamining={setIsExamining}
@@ -62,7 +54,6 @@ const Room = props => {
           <p>{`There is a ${currentWeapon} lying on the table.`}</p>
           <p>{`There is no one here.`}</p>
           <ExamineObj
-            murderWeapon={murderWeapon}
             currentWeapon={weaponsRooms[roomName]}
             isExamining={isExamining}
             setIsExamining={setIsExamining}
@@ -80,7 +71,6 @@ const Room = props => {
           <p>{`${currentPerson} is lurking in the corner.`}</p>
           <Question
             currentPerson={peopleRooms[roomName]}
-            guestPairs={guestPairs}
             isQuestioning={isQuestioning}
             setIsQuestioning={setIsQuestioning}
           />

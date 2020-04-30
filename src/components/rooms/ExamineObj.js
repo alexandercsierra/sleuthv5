@@ -1,8 +1,10 @@
-import React from "react";
+import React from 'react'
 import Examining from "./Examining";
 
 const ExamineObj = props => {
-  const { murderWeapon, currentWeapon, isExamining, setIsExamining } = props;
+  const {currentWeapon, isExamining, setIsExamining } = props;
+
+  
   return (
     <div>
       <button
@@ -12,7 +14,7 @@ const ExamineObj = props => {
         }}
       >{`Examine the ${currentWeapon}`}</button>
       {isExamining && (
-        <Examining murderWeapon={murderWeapon} currentWeapon={currentWeapon} />
+        <Examining currentWeapon={currentWeapon} />
       )}
     </div>
   );
