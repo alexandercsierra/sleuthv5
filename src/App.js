@@ -137,6 +137,9 @@ function App() {
           setGuestPairs={setGuestPairs}
         />
       )}
+      <div>
+      <h2>The murderer is: {murderer}</h2>
+      </div>
       </MurderContext.Provider>
     </div>
     

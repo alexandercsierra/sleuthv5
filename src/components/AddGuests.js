@@ -32,12 +32,11 @@ const AddGuests = props => {
 
   function handleChange(e) {
     setCurrentGuest(e.target.value);
-    // console.log(gl);
   }
 
   function onSubmit(e) {
     e.preventDefault();
-    if (gl.length < 7 && gl.includes(currentGuest) === false) {
+    if (gl.length < 7 && gl.includes(currentGuest) === false && currentGuest !== "") {
       setGl([...gl, currentGuest]);
       setCurrentGuest("");
     }
