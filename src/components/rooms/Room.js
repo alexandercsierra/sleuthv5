@@ -3,17 +3,19 @@ import { useParams } from "react-router-dom";
 import Question from "./Question";
 import ExamineObj from "./ExamineObj";
 
-const Room = ({weaponsRooms, peopleRooms, gameCounter}) => {
+const Room = ({weaponsRooms, peopleRooms, gameCounter, murderRoom}) => {
    
   const { roomName } = useParams();
   const [currentWeapon, setCurrentWeapon] = useState("");
   const [currentPerson, setCurrentPerson] = useState("");
   const [isQuestioning, setIsQuestioning] = useState(false);
   const [isExamining, setIsExamining] = useState(false);
+  const [lookAtFloor, setLookAtFloor] = useState(false);
 
   useEffect(() => {
     setCurrentWeapon(weaponsRooms[roomName]);
     setCurrentPerson(peopleRooms[roomName]);
+    setLookAtFloor(false);
   }, [roomName]);
 
   let body = document.querySelector("body");
@@ -25,6 +27,9 @@ const Room = ({weaponsRooms, peopleRooms, gameCounter}) => {
       body.style.background = "white";
   }
 
+  const checkRoom = () => {
+    return roomName === murderRoom ? "There's blood on the floor!" : "Nothing to see here."
+  }
   //there is a weapon and a person
   if (currentWeapon !== "") {
     if (currentPerson !== "") {
@@ -43,7 +48,8 @@ const Room = ({weaponsRooms, peopleRooms, gameCounter}) => {
             isExamining={isExamining}
             setIsExamining={setIsExamining}
           />
-          {gameCounter > 9 && <button>examine the floor</button>}
+          {gameCounter > 9 && <button onClick={()=>setLookAtFloor(true)}>examine the floor</button>}
+          {lookAtFloor && <p>{checkRoom()}</p>}
         </div>
       );
       //there is a weapon, but no person
@@ -74,7 +80,8 @@ const Room = ({weaponsRooms, peopleRooms, gameCounter}) => {
             isQuestioning={isQuestioning}
             setIsQuestioning={setIsQuestioning}
           />
-          {gameCounter > 9 && <button>examine the floor</button>}
+          {gameCounter > 9 && <button onClick={()=>setLookAtFloor(true)}>examine the floor</button>}
+          {lookAtFloor && <p>{checkRoom()}</p>}
         </div>
       );
       //there is no weapon and no person

@@ -6,6 +6,7 @@ const RoomSelect = () => {
   const {
     rooms,
     peopleRooms,
+    setPeopleRooms,
     setGameCounter,
     gameCounter
   } = useContext(MurderContext)
@@ -47,13 +48,13 @@ const RoomSelect = () => {
     }
 
     console.log("from randomizeGuests", obj);
+    return obj;
   }
 
-  // useEffect(() => {
-  //   // randomizeGuests();
-  //   let list = randomizeGuests();
-  //   setPeopleRooms(list);
-  // }, []);
+  useEffect(() => {
+    let list = randomizeGuests();
+    setPeopleRooms(list);
+  }, []);
 
   return (
     <div>

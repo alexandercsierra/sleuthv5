@@ -113,6 +113,7 @@ function App() {
           weaponsRooms={weaponsRooms}
           peopleRooms={peopleRooms}
           gameCounter={gameCounter}
+          murderRoom={murderRoom}
         />
       </Route>
 
@@ -137,9 +138,9 @@ function App() {
           setGuestPairs={setGuestPairs}
         />
       )}
-      <div>
+      {/* <div>
       <h2>The murderer is: {murderer}</h2>
-      </div>
+      </div> */}
       </MurderContext.Provider>
     </div>
     
